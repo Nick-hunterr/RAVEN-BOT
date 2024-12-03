@@ -1031,7 +1031,7 @@ const url = googleTTS.getAudioUrl(text, {
 
 	}
 	 break;
-	     case "gpt2": {
+	     case "gpt": {
 if (!text) {
         return m.reply("What's your question?");
     }
@@ -1539,7 +1539,7 @@ let fdr = await client.downloadAndSaveMediaMessage(qmsg);
 
                     const fta = await uploadtoimgur(fdr);
 
-
+     UploadFileUgu()
 
 
 const imagelink = `https://aemt.me/hacker2?link=${fta}`;
@@ -1885,7 +1885,7 @@ const axios = require("axios");
         let search = await yts(text);
         let link = search.all[0].url;
 
-        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/video?url=${link}`);
+        let data = await fetchJson(`https://api.dreaded.site/api/alldl?url=${link}`);
         let videoUrl = data.result.downloadLink;
 
         let outputFileName = `${search.all[0].title}.mp3`;
@@ -2230,7 +2230,7 @@ if (!text) return m.reply("What song do you want to download ?")
 let search = await yts(text);
         let link = search.all[0].url;
 
-        let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?url=${link}`)
+        let data = await fetchJson (`https://api.dreaded.site/api/alldl?url=${link}`)
 
 
 await client.sendMessage(m.chat, {
@@ -2315,7 +2315,7 @@ if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶�
 		return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗟𝗶𝗻𝗸.');
 	
 
-        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/ytmp3?url=${text}`);
+        let data = await fetchJson(`https://api.dreaded.site/api/alldl?url=${text}`);
         let videoUrl = data.result.downloadLink;
 
 let name = data.result.title;
@@ -2370,7 +2370,7 @@ if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶�
                 return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗹𝗶𝗻𝗸.');
 
 
-        let data = await fetchJson (`https://api.dreaded.site/api/ytdl/ytmp4?url=${text}`)
+        let data = await fetchJson (`https://api.dreaded.site/api/alldl?url=${text}`)
 await client.sendMessage(m.chat, {
   video: {url: data.result.downloadLink},
 mimetype: "video/mp4",
@@ -2401,7 +2401,7 @@ if (!text) return m.reply("What video do you want to download ?")
 let search = await yts(text);
         let link = search.all[0].url;
 
-        let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?url=${link}`)
+        let data = await fetchJson (`https://api.dreaded.site/api/alldl?url=${link}`)
 await client.sendMessage(m.chat, {
   video: {url: data.result.downloadLink},
 mimetype: "video/mp4",
@@ -2752,7 +2752,7 @@ break;
 }
 	break;
  
-        case 'gpt':
+        case 'gpt2':
       {
         if (!text) return reply(`Hello Am RAVEN AI developed by Nick.How can i help u?`);
           let d = await fetchJson(
