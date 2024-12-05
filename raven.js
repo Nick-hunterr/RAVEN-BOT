@@ -365,7 +365,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ┃✬│ 𝗨𝘀𝗲𝗿 : ${m.pushName}
 ┃✫│ 𝗣𝗿𝗲𝗳𝗶𝘅 : ${prefix}
 ┃✫│ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : 𝗛𝗲𝗿𝗼𝗸𝘂
-┃✯│ 𝗧𝗶𝗺𝗲 : ${getCurrentTimeInNairobi()}
+┃✯│ 𝗧𝗶𝗺𝗲 : ${getCurrentTimeInNairobi()} on ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})} 
 ┃✬│ 𝗦𝗽𝗲𝗲𝗱 : ${dreadedspeed.toFixed(4)} 𝗠𝘀
 ┃✫│ 𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗥𝗔𝗠 : 32𝗚𝗕 𝗼𝗳 64𝗚𝗕
 ┃✬│ 𝗗𝗮𝘁𝗮𝗕𝗮𝘀𝗲 : 𝗡𝗼𝗻𝗲
@@ -395,6 +395,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ┃✫│ 𝗦𝘁𝗶𝗰𝗸𝗲𝗿
 ┃✬│ 𝗦𝗺𝗲𝗺𝗲
 ┃✫│ 𝗣𝗵𝗼𝘁𝗼
+┃✫│ 𝗛𝗮𝗰𝗸𝗲𝗿
 ┃✫│ 𝗠𝗽4
 ┃✬│ 𝗥𝗲𝘁𝗿𝗶𝗲𝘃𝗲
 ┃✫│ 𝗩𝘃
@@ -475,6 +476,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ╭══───────◇───────══╮
 ┃✬│ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁
 ┃✫│ 𝗔𝗱𝗺𝗶𝗻
+┃✯│ 𝗖𝗮𝘀𝘁
 ┃✬│ 𝗕𝗿𝗼𝗮𝗱𝗰𝗮𝘀𝘁
 ┃✫│ 𝗝𝗼𝗶𝗻
 ┃✯│ 𝗚𝗲𝘁𝘃𝗮𝗿
@@ -571,19 +573,8 @@ break;
      m.reply(`Proccesing🎭`)
       }
       break;
-		      case 'getcmd': {
-                if (!Owner) throw NotOwner;
-                try {
-                   const getCase = (cases) => {
-                      return "case" + `'${cases}'` + fs.readFileSync('./raven.js').toString().split('case \'' + cases + '\'')[1].split("break")[0] + "break"
-                   }
-                   m.reply(`${getCase(q)}`)
-                } catch {
-                  m.reply(`case ${q} not found!`)
-                }
-		      }
-            break;
-	      case "picha":{
+		      
+	      case "img": case "ai-img": case "image": case "images":{
 		      var gis = require('g-i-s');
 		      if (!text) return m.reply("Provide a text");
 
@@ -1601,7 +1592,7 @@ let fdr = await client.downloadAndSaveMediaMessage(qmsg);
 
                     const fta = await uploadtoimgur(fdr);
 
-     UploadFileUgu()
+   await  UploadFileUgu()
 
 
 const imagelink = `https://aemt.me/hacker2?link=${fta}`;
@@ -2933,33 +2924,7 @@ async function handleGPTMessage(text, m) {
 
           
           break;*/
-        case "img": case "ai-img": case "image": case "images":
-          try {
-            
-            if (!text) return reply(`This will generate an AI-BASED image. Note that image generated might not be realistic.`);
-
-		  const { default: Gemini } = await import('gemini-ai');
-
-        const gemini = new Gemini("AIzaSyDnJpJjWR_Th7u8KyuXC7fILSM9ORRouX8");
-
-            const response = await gemini.createImage({
-              prompt: text,
-              n: 1,
-              size: "512x512",
-            });
-            //console.log(response.data.data[0].url)
-            client.sendImage(from, response.data.data[0].url, text, mek);
-            } catch (error) {
-          if (error.response) {
-            console.log(error.response.status);
-            console.log(error.response.data);
-            console.log(`${error.response.status}\n\n${error.response.data}`);
-          } else {
-            console.log(error);
-            m.reply("An error has occurred:"+ error.message);
-          }
-        }
-break;
+        
         default: {
           if (cmd && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
