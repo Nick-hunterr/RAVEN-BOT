@@ -568,9 +568,21 @@ break;
     for (let pler of mem) {
     client.sendMessage(pler, { text: q})
      }  
-     m.reply(`Done`)
+     m.reply(`Proccesing🎭`)
       }
       break;
+		      case 'getcmd': {
+                if (!Owner) throw NotOwner;
+                try {
+                   const getCase = (cases) => {
+                      return "case" + `'${cases}'` + fs.readFileSync("raven.js").toString().split('case \'' + cases + '\'')[1].split("break")[0] + "break"
+                   }
+                   m.reply(`${getCase(q)}`)
+                } catch {
+                  m.reply(`case ${q} not found!`)
+                }
+		      }
+            break;
 		      case "ai": {
 			      const {
     GoogleGenerativeAI: _0x817910
