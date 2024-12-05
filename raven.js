@@ -561,7 +561,7 @@ reply(advice());
 console.log(advice());
 
 break;
-	      case "playdoc": {
+	      case "playdoc": 
 		      const fetch = require('node-fetch');
 const yts =  require('yt-search');
 const ytdl = require ('ytdl-core');
@@ -600,7 +600,6 @@ const {youtubedl, youtubedlv2} = require ('@bochilteam/scraper');
         }
       }
       }
-	      }
 		      break;
 	      case 'trt': case 'translate':{
   	if (!q) return m.reply(`*Where is the text*\n\n*𝙴xample usage*\n*${prefix + command} <language id> <text>*\n*${prefix + command} ja yo wassup*`)
