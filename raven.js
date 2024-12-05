@@ -584,6 +584,7 @@ break;
 		      }
             break;
 	      case "picha":{
+		      var gis = require('g-i-s');
 		      if (!text) return m.reply("Provide a text");
 
     try {
