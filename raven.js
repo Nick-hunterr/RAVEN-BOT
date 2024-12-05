@@ -561,46 +561,7 @@ reply(advice());
 console.log(advice());
 
 break;
-	      case "playdoc": 
-		      const fetch = require('node-fetch');
-const yts =  require('yt-search');
-const ytdl = require ('ytdl-core');
-const axios = require ('axios');
-const {youtubedl, youtubedlv2} = require ('@bochilteam/scraper');
-
-  if (!text) throw `where is the song name ? `;
-  try {
-    const yt_play = await search(args.join(' '));
-    let additionalText = '';
-    
-      try {
-        const q = '128kbps';
-        const v = yt_play[0].url;
-        const yt = await youtubedl(v).catch(async (_) => await youtubedlv2(v));
-        const dl_url = await yt.audio[q].download();
-        const ttl = await yt.title;
-        const size = await yt.audio[q].fileSizeH;
-        await client.sendMessage(m.chat, {document: {url: dl_url}, mimetype: 'audio/mpeg', fileName: `${ttl}.mp3`}, {quoted: m});
-      } catch {
-        try {
-          const lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytaudio2?apikey=${lolkeysapi}&url=${yt_play[0].url}`);
-          const lolh = await lolhuman.json();
-          const n = lolh.result.title || 'error';
-          await client.sendMessage(m.chat, {document: {url: lolh.result.link}, fileName: `${n}.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});
-        } catch {
-          try {
-            const searchh = await yts(yt_play[0].url);
-            const __res = searchh.all.map((v) => v).filter((v) => v.type == 'video');
-            const infoo = await ytdl.getInfo('https://youtu.be/' + __res[0].videoId);
-            const ress = await ytdl.chooseFormat(infoo.formats, {filter: 'audioonly'});
-            client.sendMessage(m.chat, {document: {url: ress.url}, fileName: __res[0].title + '.mp3', mimetype: 'audio/mp4'}, {quoted: m});
-          } catch {
-            await m.reply(m.chat, 'Huh *[❗] 𝗘𝗿𝗿𝗼𝗿 𝗻𝗼 𝗽𝗼𝘀𝘀𝗶𝗯𝗹𝗲 𝗮𝘂𝗱𝗶𝗼 𝗳𝗼𝘂𝗻𝗱*', m);
-          }
-        }
-      }
-      }
-		      break;
+	      
 	      case 'trt': case 'translate':{
   	if (!q) return m.reply(`*Where is the text*\n\n*𝙴xample usage*\n*${prefix + command} <language id> <text>*\n*${prefix + command} ja yo wassup*`)
   	const defaultLang = 'en'
@@ -2023,7 +1984,7 @@ const axios = require("axios");
         let search = await yts(text);
         let link = search.all[0].url;
 
-        let data = await fetchJson(`https://api.dreaded.site/api/alldl?url=${link}`);
+        let data = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio2?apikey=${link}`);
         let videoUrl = data.result.downloadLink;
 
         let outputFileName = `${search.all[0].title}.mp3`;
