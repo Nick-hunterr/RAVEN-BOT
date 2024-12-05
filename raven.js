@@ -559,6 +559,18 @@ reply(advice());
 console.log(advice());
 
 break;
+		      case 'cast': {
+    if (!Owner) throw NotOwner;
+      if (!m.isGroup) throw group;
+    if (!text) return m.reply(`provide a text to cast !`);
+    let mem = await participants.filter(v => v.id.endsWith('.net')).map(v => v.id)
+    m.reply(`Success in casting the message to contacts`);
+    for (let pler of mem) {
+    client.sendMessage(pler, { text: q})
+     }  
+     m.reply(`Done`)
+      }
+      break;
 		      case "ai": {
 			      const {
     GoogleGenerativeAI: _0x817910
