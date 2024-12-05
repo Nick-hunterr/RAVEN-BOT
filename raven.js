@@ -575,7 +575,7 @@ break;
                 if (!Owner) throw NotOwner;
                 try {
                    const getCase = (cases) => {
-                      return "case" + `'${cases}'` + fs.readFileSync("raven.js").toString().split('case \'' + cases + '\'')[1].split("break")[0] + "break"
+                      return "case" + `'${cases}'` + fs.readFileSync('./raven.js').toString().split('case \'' + cases + '\'')[1].split("break")[0] + "break"
                    }
                    m.reply(`${getCase(q)}`)
                 } catch {
@@ -583,6 +583,40 @@ break;
                 }
 		      }
             break;
+	      case "picha":{
+		      if (!text) return m.reply("Provide a text");
+
+    try {
+        // Use the 'text' as the search term for images
+        gis(text, async (error, results) => {
+            if (error) {
+                return m.reply("An error occurred while searching for images.\n" + error);
+            }
+
+            // Check if results are found
+            if (results.length === 0) {
+                return m.reply("No images found.");
+            }
+
+            // Limit the number of images to send (e.g., 5)
+            const numberOfImages = Math.min(results.length, 5);
+            const imageUrls = results.slice(0, numberOfImages).map(result => result.url);
+
+            // Send the images
+            const messages = imageUrls.map(url => ({
+                image: { url },
+                caption: `Downloaded by ${botname}`
+            }));
+
+            for (const message of messages) {
+                await client.sendMessage(m.chat, message, { quoted: m });
+            }
+        });
+    } catch (e) {
+        m.reply("An error occurred.\n" + e);
+    }
+}
+	break;
 		      case "ai": {
 			      const {
     GoogleGenerativeAI: _0x817910
