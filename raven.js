@@ -369,7 +369,6 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ┃✯│ 𝗧𝗶𝗺𝗲 : ${getCurrentTimeInNairobi()} on ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})} 
 ┃✬│ 𝗦𝗽𝗲𝗲𝗱 : ${dreadedspeed.toFixed(4)} 𝗠𝘀
 ┃✫│ 𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗥𝗔𝗠 : 32𝗚𝗕 𝗼𝗳 64𝗚𝗕
-┃✬│ 𝗗𝗮𝘁𝗮𝗕𝗮𝘀𝗲 : 𝗡𝗼𝗻𝗲
 ┃✫│●───●───●───●─●╮
 ┃✬│  ▋▋𝗥𝗔𝗩𝗘𝗡 𝗠𝗗 ▋▋
 ┃✫│●───●───●───●─●╯
@@ -610,6 +609,23 @@ break;
     }
 }
 	break;
+	      case 'dalle': case 'createimage': {
+  if (!text) return m.reply(`*This command generates images from text prompts*\n\n*𝙴xample usage*\n*${prefix + command} Beautiful anime girl*\n*${prefix + command} girl in pink dress*`);
+  try {
+  	m.reply('Please wait, i am generating your image...')
+    const endpoint = `https://cute-tan-gorilla-yoke.cyclic.app/imagine?text=${encodeURIComponent(text)}`
+    const response = await fetch(endpoint)
+    if (response.ok) {
+      const imageBuffer = await response.buffer()
+      await client.sendMessage(m.chat, { image: imageBuffer }, {quoted: m})
+    } else {
+      throw '*Aarrhhhg Image generation failed*';
+    }
+  } catch {
+    m.reply('Oops! Something went wrong while generating your image. Please try again later.')
+  }
+		      }
+		 break;
 		      case "ai": {
 			      const {
     GoogleGenerativeAI: _0x817910
