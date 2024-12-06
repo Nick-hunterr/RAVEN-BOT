@@ -2718,7 +2718,14 @@ case "movie":
  break;
  
       case "nick": case "owner": 
- client.sendMessage(m.chat, { video: { url: 'https://i.imgur.com/ayWSYMA.mp4' }, caption: `𝗛𝗲𝗿𝗲 𝗶𝘀 𝗠𝘆 𝗢𝘄𝗻𝗲𝗿 𝗖𝗼𝗻𝘁𝗮𝗰𝘁🔥 https://wa.me/message/YNDA2RFTE35LB1 𝗢𝗻𝗹𝘆 𝗗𝗺 𝘄𝗶𝘁𝗵 𝗮 𝗿𝗲𝗮𝘀𝗼𝗻😁` }, {quoted: m}); 
+		      const daddy = ['https://i.imgur.com/ayWSYMA.mp4',
+				    'https://i.imgur.com/2I5jIi0.mp4',
+				    'https://i.imgur.com/k5Sa7fp.mp4',
+				    'https://i.imgur.com/pZXCQla.mp4',
+				    ];
+		      const wife = daddy[Math.floor(Math.random() * daddy.length)];
+		      
+ client.sendMessage(m.chat, { video: { url: wife }, caption: `𝗛𝗲𝗿𝗲 𝗶𝘀 𝗠𝘆 𝗢𝘄𝗻𝗲𝗿 𝗖𝗼𝗻𝘁𝗮𝗰𝘁🔥 https://wa.me/message/YNDA2RFTE35LB1 𝗢𝗻𝗹𝘆 𝗗𝗺 𝘄𝗶𝘁𝗵 𝗮 𝗿𝗲𝗮𝘀𝗼𝗻😁` }, {quoted: m}); 
   
  break;
        
