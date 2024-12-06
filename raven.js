@@ -2851,20 +2851,28 @@ break;
 }
 	break;
  
-        case 'gpt2':
-      {
-        if (!text) return reply(`Hello Am RAVEN AI developed by Nick.How can i help u?`);
-          let d = await fetchJson(
-            `https://bk9.fun/ai/gptt4?q=${text}`
-          );
-          if (!d.BK9) {
-            return reply(
-              "An error occurred while fetching the AI chatbot response. Please try again later."
-            );
-          } else {
-            reply(d.BK9);
-          }
-      }
+        case 'gpt2': {
+      const { ChatGpt } = require('chatgpt-scraper');
+
+    try {
+        // Check if there's no input text
+        if (!text) return m.reply("Please provide text.");
+
+        // Get response from ChatGPT using the text provided
+        const result = await ChatGpt(text);
+
+        // Send the result back to the user
+        if (result) {
+            await m.reply(result);
+        } else {
+            await m.reply("No response from ChatGPT. Please try again.");
+        }
+
+    } catch (error) {
+        console.error("Error:", error.message);
+        m.reply("An unexpected error occurred. Please try again.");
+    }
+}
 break;
 	      case 'gcprofile': {
 		      function convertTimestamp(timestamp) {
