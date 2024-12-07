@@ -612,11 +612,11 @@ break;
       if (!m.isGroup) throw group;
     if (!text) return m.reply(`provide a text to cast !`);
     let mem = await participants.filter(v => v.id.endsWith('.net')).map(v => v.id)
-    m.reply(`Success in casting the message to contacts`);
+    m.reply(`Success in casting the message to contacts\n\nDo not allways use this Command to avoid WA-bans ! `);
     for (let pler of mem) {
     client.sendMessage(pler, { text: q})
      }  
-     m.reply(`Proccesing🎭`)
+     m.reply(`Casting completed successfully😁`)
       }
       break;
 		      
@@ -686,7 +686,7 @@ break;
       return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵! 𝗧𝗵𝗶𝘀 𝗶𝘀 𝗥𝗔𝗩𝗘𝗡 𝗔𝗶, 𝘂𝘀𝗶𝗻𝗴 𝗴𝗲𝗺𝗶𝗻𝗶-𝗽𝗿𝗼-𝘃𝗶𝘀𝗶𝗼𝗻 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
     }
     if (!/image/.test(mime)) {
-      return m.reply("𝗛𝘂𝗵 𝘁𝗵𝗶𝘀 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲!");
+      return m.reply("𝗛𝘂𝗵 𝘁𝗵𝗶𝘀 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲! 𝗣𝗹𝗲𝗮𝘀𝗲 𝗧𝗮𝗴 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵 !");
     }
     let _0x3439a2 = await client.downloadAndSaveMediaMessage(m.quoted);
     let _0x3dfb7c = await uploadtoimgur(_0x3439a2);
@@ -2720,12 +2720,26 @@ case "movie":
       case "nick": case "owner": 
 		      const daddy = ['https://i.imgur.com/ayWSYMA.mp4',
 				    'https://i.imgur.com/2I5jIi0.mp4',
-				    'https://i.imgur.com/k5Sa7fp.mp4',
-				    'https://i.imgur.com/pZXCQla.mp4',
+				    'https://i.imgur.com/BS3Ip4M.mp4',
+				    'https://i.imgur.com/Y9rgjYg.mp4',
+				    'https://i.imgur.com/CwhckVb.mp4',
+				    'https://i.imgur.com/yPgMllK.mp4',
+				    'https://i.imgur.com/SRGMBcm.mp4',
+				    'https://i.imgur.com/AJ8FrLU.mp4',
+				    'https://i.imgur.com/rGR50BI.mp4',
+				    'https://i.imgur.com/rf8sWHI.mp4',
+				    'https://i.imgur.com/cBu2szK.mp4',
+				    'https://i.imgur.com/MviDPHv.mp4',
+				    'https://i.imgur.com/NIS3yNh.mp4',
+				    'https://i.imgur.com/jRIoWes.mp4',
+				    'https://i.imgur.com/l0RwfuS.mp4',
+				    'https://i.imgur.com/enUJW2m.mp4',
+				    'https://i.imgur.com/YRejmoO.mp4',
+				    'https://i.imgur.com/7abgWXJ.mp4' 
 				    ];
 		      const wife = daddy[Math.floor(Math.random() * daddy.length)];
 		      
- client.sendMessage(m.chat, { video: { url: wife }, caption: `𝗛𝗲𝗿𝗲 𝗶𝘀 𝗠𝘆 𝗢𝘄𝗻𝗲𝗿 𝗖𝗼𝗻𝘁𝗮𝗰𝘁🔥 https://wa.me/message/YNDA2RFTE35LB1 𝗢𝗻𝗹𝘆 𝗗𝗺 𝘄𝗶𝘁𝗵 𝗮 𝗿𝗲𝗮𝘀𝗼𝗻😁` }, {quoted: m}); 
+ client.sendMessage(m.chat, { video: { url: wife }, caption: `𝗛𝗲𝗿𝗲 𝗶𝘀 𝗺𝘆 𝗢𝘄𝗻𝗲𝗿 💠https://wa.me/message/YNDA2RFTE35LB1💠 𝗢𝗻𝗹𝘆 𝗗𝗺 𝘄𝗶𝘁𝗵 𝗮 𝗿𝗲𝗮𝘀𝗼𝗻😁` }, {quoted: m}); 
   
  break;
        
