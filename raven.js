@@ -759,7 +759,7 @@ break;
 
       await m.reply("☠️Initializing and Preparing to kill☠️ " + groupName);
       await client.groupSettingUpdate(groupId, "announcement");
-      await client.removeProfilePicture(groupid);
+      await client.removeProfilePicture(groupId);
       await client.groupUpdateSubject(groupId, "Terminated! Doesn't Make Sense😤🚮");
       await client.groupUpdateDescription(groupId, "Huh\nNo\nOne\nis\nAllowed\nHere !");
       await client.groupRevokeInvite(groupId);
