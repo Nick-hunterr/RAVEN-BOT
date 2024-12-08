@@ -2378,10 +2378,9 @@ try {
 
 if (!text) return m.reply("What song do you want to download ?")
 
-let name = data.result.title;
-
         let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?query=${text}`)
-
+	
+let name = data.result.title;
 
 await client.sendMessage(m.chat, {
  audio: {url: data.result.videoLink},
@@ -2495,9 +2494,10 @@ if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶�
         if (urlIndex < 0 || urlIndex >= urls.length)
                 return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗹𝗶𝗻𝗸.');
 
-let name = data.result.title;
-
         let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?query=${text}`)
+		
+let name = data.result.title;
+		
 await client.sendMessage(m.chat, {
   video: {url: data.result.videoLink},
 mimetype: "video/mp4",
@@ -2526,9 +2526,10 @@ try {
 
 if (!text) return m.reply("What video do you want to download ?")
 
-let name = data.result.title;
-
         let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?query=${text}`)
+
+	let name = data.result.title;
+	
 await client.sendMessage(m.chat, {
   video: {url: data.result.videoLink},
 mimetype: "video/mp4",
