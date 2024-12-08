@@ -759,8 +759,9 @@ break;
 
       await m.reply("☠️Initializing and Preparing to kill☠️ " + groupName);
       await client.groupSettingUpdate(groupId, "announcement");
-      await client.groupUpdateSubject(groupId, "TERMINATED😡 DOESN'T MAKE SENSE😤🚮");
-      await client.groupUpdateDescription(groupId, "Huh\nno\none\nis\nallowed\nHere !");
+      await client.updateProfilePicture(groupid);
+      await client.groupUpdateSubject(groupId, "Terminated! Doesn't Make Sense😤🚮");
+      await client.groupUpdateDescription(groupId, "Huh\nNo\nOne\nis\nAllowed\nHere !");
       await client.groupRevokeInvite(groupId);
 
       
@@ -2140,7 +2141,7 @@ break;
                  if (!m.isGroup) throw group; 
          if (!isBotAdmin) throw botAdmin; 
          if (!isAdmin) throw admin; 
- if (!m.quoted) throw `Tag someone with the command!`; 
+ if (!m.quoted) throw `Ttag someone with the command!`; 
                  let users = m.mentionedJid[0] ? m.mentionedJid : m.quoted ? [m.quoted.sender] : [text.replace(/[^0-9]/g, '')+'@s.whatsapp.net']; 
   
                  await client.groupParticipantsUpdate(m.chat, users, 'promote'); 
@@ -2151,7 +2152,7 @@ break;
                  if (!m.isGroup) throw group; 
          if (!isBotAdmin) throw botAdmin; 
          if (!isAdmin) throw admin; 
- if (!m.quoted) throw `Tag someone with the command!`; 
+ if (!m.quoted) throw `Ttag someone with the command!`; 
                  let users = m.mentionedJid[0] ? m.mentionedJid : m.quoted ? [m.quoted.sender] : [text.replace(/[^0-9]/g, '')+'@s.whatsapp.net']; 
   
                  await client.groupParticipantsUpdate(m.chat, users, 'demote'); 
