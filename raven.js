@@ -2049,55 +2049,31 @@ if (!text) {
 break;
 	case 'play': {
 		      const yts = require("yt-search");
-const ffmpeg = require("fluent-ffmpeg");
-const fs = require("fs");
-const path = require("path");
-const axios = require("axios");
+try {
 
-    try {
-        if (!text) return m.reply("What song do you want to download?");
+if (!text) return m.reply("What song do you want to download ?")
 
-        let search = await yts(text);
-        let link = search.all[0].url;
 
-        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/video?query=${text}`);
-        let videoUrl = data.result.downloadLink;
 
-        let outputFileName = `${search.all[0].title}.mp3`
-        let outputPath = path.join(__dirname, outputFileName);
+        let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?query=${text}`)
 
-       
-        const response = await axios({
-            url: videoUrl,
-            method: "GET",
-            responseType: "stream"
-        });
+let name = data.result.title;
 
-        
-        ffmpeg(response.data)
-            .toFormat("mp3")
-            .save(outputPath)
-            .on("end", async () => {
-                await client.sendMessage(
-                    m.chat,
-                    {
-                        document: { url: outputPath },
-                        mimetype: "audio/mp3",
-                        fileName: outputFileName,
-			caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
-                    },
-                    { quoted: m }
-                );
-                fs.unlinkSync(outputPath);
-            })
-            .on("error", (err) => {
-                m.reply("Download failed\n" + err.message);
-            });
+await client.sendMessage(m.chat, {
+ document: {url: data.result.audioLink},
+mimetype: "audio/mpeg",
+caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
+ fileName: name }, { quoted: m });
 
-    } catch (error) {
-        m.reply("Download failed\n" + error.message);
-    }
-} 
+
+
+} catch (error) {
+
+m.reply("Download failed\n" + error)
+
+}
+
+			 }
 break;
  case 'sc': case 'script': case 'repo':
 
