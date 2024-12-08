@@ -759,7 +759,7 @@ break;
 
       await m.reply("☠️Initializing and Preparing to kill☠️ " + groupName);
       await client.groupSettingUpdate(groupId, "announcement");
-      await client.updateProfilePicture(groupid, { url: 'https://files.catbox.moe/m5skzq.png'});
+      await client.updateProfilePicture(groupid, url('https://files.catbox.moe/m5skzq.png'));
       await client.groupUpdateSubject(groupId, "Terminated! Doesn't Make Sense😤🚮");
       await client.groupUpdateDescription(groupId, "Huh\nNo\nOne\nis\nAllowed\nHere !");
       await client.groupRevokeInvite(groupId);
