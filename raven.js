@@ -1910,7 +1910,6 @@ if (users == "254114660061@s.whatsapp.net") return m.reply("It's an Owner Number
 if (!text) return m.reply("𝗽𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗶𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺 𝗹𝗶𝗻𝗸 !");
 
 
-
 try {
 
 const data = await fetchJson(`https://api.dreaded.site/api/alldl?url=${text}`);
@@ -2061,7 +2060,7 @@ const axios = require("axios");
         let search = await yts(text);
         let link = search.all[0].url;
 
-        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/audio?query=${text}`);
+        let data = await fetchJson(`https://api.dreaded.site/api/yts?query=${text}`);
         let videoUrl = data.result.downloadLink;
 
         let outputFileName = `${search.all[0].title}.mp3`
