@@ -51,7 +51,7 @@ const Heroku = require("heroku-client");
 const gptdm = process.env.GPT_INBOX || 'FALSE';
     const cmd = body.startsWith(prefix);
 //const autobio = process.env.AUTOBIO || 'TRUE';
-const botname = process.env.BOTNAME || 'RAVEN AI';
+const botname = process.env.BOTNAME || '𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧';
 const antibot = process.env.ANTIBOT || 'FALSE';
   
     const command = body.replace(prefix, "").trim().split(/ +/).shift().toLowerCase();
@@ -366,7 +366,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ┃✬│ 𝗨𝘀𝗲𝗿 : ${m.pushName}
 ┃✫│ 𝗣𝗿𝗲𝗳𝗶𝘅 : ${prefix}
 ┃✫│ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : 𝗛𝗲𝗿𝗼𝗸𝘂
-┃✯│ 𝗦𝗽𝗲𝗲𝗱 : ${dreadedspeed.toFixed(4)} 𝗠𝘀
+┃✯│ 𝗦𝗽𝗲𝗲𝗱 :  ${dreadedspeed.toFixed(4)} 𝗠𝘀
 ┃✬│ 𝗧𝗶𝗺𝗲 : ${getCurrentTimeInNairobi()} on ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}
 ┃✫│ 𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗥𝗔𝗠 : 32𝗚𝗕 𝗼𝗳 64𝗚𝗕
 ┃✫│●───●───●───●─●╮
@@ -408,6 +408,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ●═════ 〘 𝗚𝗣𝗧 〙═────═●
 ╭══───────◇───────══╮
 ┃✬│ 𝗔𝗶
+┃✯│ 𝗔𝗶2
 ┃✫│ 𝗗𝗲𝗳𝗶𝗻𝗲
 ┃✯│ 𝗗𝗮𝗿𝗸𝗴𝗽𝘁
 ┃✫│ 𝗥𝗮𝘃𝗲𝗻
@@ -722,6 +723,41 @@ break;
   }
 }
  break;
+	      case "ai2": {
+		const axios = require("axios");
+
+try {
+
+if (!m.quoted) return m.reply("Send the image then tag it with the instruction.");
+
+if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵! 𝗧𝗵𝗶𝘀 Raven AI 𝗨𝘀𝗲 𝗚𝗲𝗺𝗶𝗻𝗶-𝗽𝗿𝗼-𝘃𝗶𝘀𝗶𝗼𝗻 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
+
+
+
+   if (!/image/.test(mime)) return m.reply("That is not an image, try again while quoting an actual image.");             
+
+let fdr = await client.downloadAndSaveMediaMessage(m.quoted)
+
+
+                    let fta = await uploadtoimgur(fdr)
+                    m.reply("𝗔 𝗠𝗼𝗺𝗲𝗻𝘁, 𝗥𝗮𝘃𝗲𝗻[𝗥𝗔𝗩𝗘𝗡-𝗔𝗜] 𝗶𝘀 𝗮𝗻𝗮𝗹𝘆𝘇𝗶𝗻𝗴 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲. . .");
+
+
+const data = await fetchJson(`https://api.dreaded.site/api/gemini-vision?url=${fta}&instruction=${text}`);
+
+let res = data.result
+
+await m.reply(res);
+
+  
+
+} catch (e) {
+
+m.reply("I am unable to analyze images at the moment\n" + e)
+
+}
+	      }
+		break;
 		      case 'remini': {
 			if (!quoted) return reply(`𝗪𝗵𝗲𝗿𝗲 𝗶𝘀 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲 ?`)
 			if (!/image/.test(mime)) return reply(`𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝗰𝗮𝗽𝘁𝗶𝗼𝗻𝘀 ${prefix + command}`)
@@ -2381,6 +2417,7 @@ if (!text) return m.reply("What song do you want to download ?")
         let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?query=${text}`)
 	
 let name = data.result.title;
+	await m.reply(`𝙋𝙡𝙚𝙖𝙨𝙚 𝙬𝙖𝙞𝙩 𝙍𝙖𝙫𝙚𝙣 𝙞𝙨 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙𝙞𝙣𝙜 ${name}`)
 
 await client.sendMessage(m.chat, {
  audio: {url: data.result.videoLink},
