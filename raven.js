@@ -2406,7 +2406,7 @@ if (!text) return m.reply("What song do you want to download ?")
 let search = await yts(text);
         let link = search.all[0].url;
 
-        let data = await fetchJson (`https://api.dreaded.site/api/alldl?url=${link}`)
+        let data = await fetchJson (`https://api.dreaded.site/api/ytdl/audio?query=${text}`)
 
 
 await client.sendMessage(m.chat, {
