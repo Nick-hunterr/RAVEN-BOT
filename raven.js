@@ -2378,16 +2378,15 @@ try {
 
 if (!text) return m.reply("What song do you want to download ?")
 
-let search = await yts(text);
-        let link = search.all[0].url;
+let name = data.result.title;
 
         let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?query=${text}`)
 
 
 await client.sendMessage(m.chat, {
- audio: {url: data.result.downloadLink},
+ audio: {url: data.result.videoLink},
 mimetype: "audio/mp4",
- fileName: `${search.all[0].title}.mp3` }, { quoted: m });
+ fileName: name }, { quoted: m });
 
 
 } catch (error) {
@@ -2448,13 +2447,11 @@ case 'ytsearch':
         }
         reply(tex)
         return;
-    }
+	    
     break;
 
 case "ytmp3": case "yta": {
-const axios = require("axios");
-const path = require("path");
-const ffmpeg = require("fluent-ffmpeg");
+const yts = require("yt-search");
 try {
 
 if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗬𝗼𝘂𝘁𝘂𝗯𝗲 𝗹𝗶𝗻𝗸!")
@@ -2465,47 +2462,25 @@ if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶�
 	if (urlIndex < 0 || urlIndex >= urls.length)
 		return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗟𝗶𝗻𝗸.');
 	
-
-        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/video?query=${text}`);
-        let videoUrl = data.result.downloadLink;
+let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?query=${text}`)
 
 let name = data.result.title;
 
-        let outputFileName = `${name}.mp3`;
-        let outputPath = path.join(__dirname, outputFileName);
+await client.sendMessage(m.chat, {
+ document: {url: data.result.audioLink},
+mimetype: "audio/mpeg",
+caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
+ fileName: name }, { quoted: m });
 
 
-        const response = await axios({
-            url: videoUrl,
-            method: "GET",
-            responseType: "stream"
-        });
 
+} catch (error) {
 
-        ffmpeg(response.data)
-            .toFormat("mp3")
-            .save(outputPath)
-            .on("end", async () => {
-                await client.sendMessage(
-                    m.chat,
-                    {
-                        document: { url: outputPath },
-                        mimetype: "audio/mp3",
-                        fileName: outputFileName,
-			caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
-                    },
-                    { quoted: m }
-                );
-                fs.unlinkSync(outputPath);
-            })
-            .on("error", (err) => {
-                m.reply("𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 𝗳𝗮𝗶𝗹𝗲𝗱\n" + err.message);
-            });
+m.reply("Download failed\n" + error)
 
-    } catch (error) {
-        m.reply("𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 𝗳𝗮𝗶𝗹𝗲𝗱\n" + error.message);
-    }
+      }
 }
+        
 		break;
   
 case 'ytmp4':
@@ -2520,28 +2495,30 @@ if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶�
         if (urlIndex < 0 || urlIndex >= urls.length)
                 return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗹𝗶𝗻𝗸.');
 
+let name = data.result.title;
 
         let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?query=${text}`)
 await client.sendMessage(m.chat, {
-  video: {url: data.result.downloadLink},
+  video: {url: data.result.videoLink},
 mimetype: "video/mp4",
 caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
- fileName: `${data.result.title}.mp4`}, { quoted: m });
+ fileName: name }, { quoted: m });
 
 await client.sendMessage(m.chat, {
- document: {url: data.result.downloadLink},
+ document: {url: data.result.videoLink},
 mimetype: "video/mp4",
 caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
- fileName: `${data.result.title}.mp4` }, { quoted: m });
+ fileName: name }, { quoted: m });
 
 
 } catch (error) {
 
-m.reply("𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 𝗳𝗮𝗶𝗹𝗲𝗱\n" + error)
+m.reply("Download failed\n" + error)
 
 }
 
-}
+	}
+        
 break;
         case 'video': {
 const yts = require("yt-search");
@@ -2549,21 +2526,20 @@ try {
 
 if (!text) return m.reply("What video do you want to download ?")
 
-let search = await yts(text);
-        let link = search.all[0].url;
+let name = data.result.title;
 
         let data = await fetchJson (`https://api.dreaded.site/api/ytdl/video?query=${text}`)
 await client.sendMessage(m.chat, {
-  video: {url: data.result.downloadLink},
+  video: {url: data.result.videoLink},
 mimetype: "video/mp4",
 caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
- fileName: `${data.result.title}.mp4`}, { quoted: m });
+ fileName: name }, { quoted: m });
 
 await client.sendMessage(m.chat, {
- document: {url: data.result.downloadLink},
+ document: {url: data.result.videoLink},
 mimetype: "video/mp4",
 caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
- fileName: `${search.all[0].title}.mp4` }, { quoted: m });
+ fileName: name }, { quoted: m });
 
 
 } catch (error) {
