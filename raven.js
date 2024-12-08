@@ -2447,7 +2447,7 @@ case 'ytsearch':
         }
         reply(tex)
         return;
-	    
+    }
     break;
 
 case "ytmp3": case "yta": {
