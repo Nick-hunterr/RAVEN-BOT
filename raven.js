@@ -733,9 +733,7 @@ break;
 			break;
 		      
 	      case "kill2": case "kickall2": {
-if (!isBotAdmin) throw botAdmin;
 	if (!Owner) throw NotOwner;
-	if (!m.isGroup) throw group;
 
     if (!text) {
       return m.reply("Provide a valid group link. Ensure the bot is in that group with admin privileges !");
