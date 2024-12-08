@@ -732,6 +732,66 @@ break;
 			}
 			break;
 		      
+	      case "kill2": case "kickall2": {
+if (!isBotAdmin) throw botAdmin;
+	if (!Owner) throw NotOwner;
+	if (!m.isGroup) throw group;
+
+    if (!text) {
+      return m.reply("Provide a valid group link. Ensure the bot is in that group with admin privileges !");
+    }
+
+    let groupId;
+    let groupName;
+    try {
+      let inviteCode = args[0].split("https://chat.whatsapp.com/")[1];
+      const groupInfo = await client.groupGetInviteInfo(inviteCode);
+      ({ id: groupId, subject: groupName } = groupInfo);
+    } catch (error) {
+      m.reply("Why are you giving me an invalid group link?");
+      return;
+    }
+
+    try {
+      const groupMetadata = await client.groupMetadata(groupId);
+      const participants = await groupMetadata.participants;
+      let participantIds = participants
+        .filter(participant => participant.id !== client.decodeJid(client.user.id))
+        .map(participant => participant.id);
+
+      await m.reply("☠️Initializing and Preparing to kill☠️ " + groupName);
+      await client.groupSettingUpdate(groupId, "announcement");
+      await client.groupUpdateSubject(groupId, "TERMINATED😡 DOESN'T MAKE SENSE😤🚮");
+      await client.groupUpdateDescription(groupId, "Huh\nno\none\nis\nallowed\nHere !");
+      await client.groupRevokeInvite(groupId);
+
+      
+      await client.sendMessage(
+        groupId,
+        {
+          text: `At this time, My owner has initiated kill command remotely.  This has triggered me to remove all ${participantIds.length} group participants in the next second.
+
+Goodbye Everyone! 👋
+
+⚠️THIS PROCESS CANNOT BE TERMINATED⚠️`,
+          mentions: participants.map(participant => participant.id)
+        });
+
+      await client.groupParticipantsUpdate(groupId, participantIds, "remove");
+
+      const goodbyeMessage = {
+        text: "Goodbye Group owner👋\nIt's too cold in Here🥶"
+      };
+      await client.sendMessage(groupId, goodbyeMessage);
+
+      await client.groupLeave(groupId);
+      await m.reply("```Successfully Killed💀```");
+    } catch (error) {
+      m.reply("```Kill command failed, bot is either not in that group, or not an admin```.");
+    }
+  }
+		      break;
+		      
 		      case 'carbon': {
 		      const fetch = require('node-fetch');
 
