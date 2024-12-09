@@ -17,7 +17,7 @@ const ytdl = require("ytdl-core");
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
 const { fetchUrl, isUrl, processTime } = require("./lib/ravenfunc");
 const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/ravenupload');
-const { Configuration, OpenAIApi } = require("openai");
+const { Configuration, OpenAI } = require("openai");
 let setting = process.env.AI; 
 const { smsg, formatp, tanggal, formatDate, getTime,  sleep, generateProfilePicture, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/ravenfunc');
 const { exec, spawn, execSync } = require("child_process");
@@ -566,23 +566,45 @@ console.log(advice());
 
 break;
 	      case "gpt3": {
-		      const OpenAI =  require('openai');
+		const OpenAI = require("openai");
+		    if (!text) return reply("Hello am Raven an Ai developed by Nick, how can I help you today?");
 
-if (!text) return reply("Hello am Raven an Ai developed by Nick, how can I help you today?");
+           const configuration = new Configuration("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");
 
-const client = new OpenAI("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");
+            const g = new OpenAI(configuration);
 
-async function main(){
-  const params: OpenAI.Chat.ChatCompletionCreateParams = {
-    messages: [{ role: 'user', content: 'Say this is a test' }],
-    model: 'gpt-4o',
-  };
-  const chatCompletion: OpenAI.Chat.ChatCompletion = await client.chat.completions.create(params);
-}
+            try {
 
-m.reply(`${main}`);
-      }
-        break;
+const response = await g.createChatCompletion({
+
+          model: "gpt-4o",
+
+          messages: [{role: "user", content: text}],
+
+          });
+
+          m.reply(`${response.data.choices[0].message.content}`);
+
+          } catch (error) {
+
+          if (error.response) {
+
+            console.log(error.response.status);
+
+            console.log(error.response.data);
+
+            console.log(`${error.response.status}\n\n${error.response.data}`);
+
+          } else {
+
+            console.log(error);
+
+            m.reply("I\'m Facing An Error:"+ error.message);
+
+	  }
+	    }
+	      }
+                break;
 	      
 	      case 'trt': case 'translate':{
   	try {
