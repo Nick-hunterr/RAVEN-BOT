@@ -565,6 +565,23 @@ reply(advice());
 console.log(advice());
 
 break;
+	      case "gpt3": {
+		      const OpenAI =  require('openai');
+
+if (!text) return reply("Hello am Raven an Ai developed by Nick, how can I help you today?");
+
+const client = new OpenAI("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");
+
+async function main() {
+  const params: OpenAI.Chat.ChatCompletionCreateParams = {
+    messages: [{ role: 'user', content: 'Say this is a test' }],
+    model: 'gpt-4o',
+  };
+  const chatCompletion: OpenAI.Chat.ChatCompletion = await client.chat.completions.create(params);
+}
+
+main(); }
+		 break;
 	      
 	      case 'trt': case 'translate':{
   	try {
