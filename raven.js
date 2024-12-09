@@ -566,7 +566,7 @@ console.log(advice());
 
 break;
 	      case "gpt3": {
-		const OpenAI = require("openai");
+		const { Configuration, OpenAI } = require("openai");
 		    if (!text) return reply("Hello am Raven an Ai developed by Nick, how can I help you today?");
 
            const configuration = new Configuration("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");
