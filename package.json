@@ -67,7 +67,7 @@
       "chatgpt-scraper":"^1.0.1",
      "performance-now": "^2.1.0",
       "util": "^0.12.5",
-     "openai": "^4.76.0",
+     "openai": "^4.0.0",
       "g4f":"^1.1.0",
    "acrcloud": "^1.4.0",
      "ytdl-secktor": "^0.0.1-development", 
