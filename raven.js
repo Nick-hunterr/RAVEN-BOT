@@ -1491,7 +1491,7 @@ case 'attp':
                 atas = text.split('|')[0] ? text.split('|')[0] : '-'
                 bawah = text.split('|')[1] ? text.split('|')[1] : '-'
                 let dwnld = await client.downloadAndSaveMediaMessage(qmsg)
-                let fatGans = await TelegraPh(dwnld)
+                let fatGans = await uploadtoimgur(dwnld)
                 let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(bawah)}/${encodeURIComponent(atas)}.png?background=${fatGans}`
                 let pop = await client.sendImageAsSticker(m.chat, smeme, m, {
                     packname: packname,
@@ -2469,7 +2469,7 @@ m.reply("Download failed\n" + error)
 	const yts = require("youtube-yts");
 	let search = await yts(text);
 	let telaso = search.all[0].url;
-	let kyuu = await fetchJson (`https://widipe.com/download/ytdl?url=${telaso}`)
+	let kyuu = await fetchJson (`https://bk9.fun/download/ytmp3?url=${telaso}`)
 await client.sendMessage(m.chat, {
   document: {url: kyuu.result.mp3},
 mimetype: "audio/mp3",
@@ -2978,7 +2978,7 @@ break;
 
         // Send the result back to the user
         if (result.ok) {
-            await m.reply(result);
+            await m.reply(`${result.data.choices[0].message.text}`);
         } else {
             await m.reply("No response from ChatGPT. Please try again.");
         }
@@ -3024,7 +3024,7 @@ await client.sendMessage(m.chat, { image: { url: pp },
                 if (!quoted) return reply('Reply to Sticker')
                 if (!/webp/.test(mime)) return reply(`reply sticker with caption *${prefix + command}*`)
                 
-		        let { webp2mp4File } = require('./lib/ravenupload')
+		        let { webp2mp4File } = await fetchJson(`https://bk9.fun/converter/webpToMp4?url=${quoted}`)
                 let media = await client.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
                 await client.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' } }, { quoted: m })
