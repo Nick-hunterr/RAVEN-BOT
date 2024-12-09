@@ -18,7 +18,7 @@ const ytdl = require("ytdl-core");
 const { fetchUrl, isUrl, processTime } = require("./lib/ravenfunc");
 const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/ravenupload');
 const { Configuration, OpenAI } = require("openai");
-let setting = process.env.AI; 
+let setting = process.env.AI || "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";
 const { smsg, formatp, tanggal, formatDate, getTime,  sleep, generateProfilePicture, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/ravenfunc');
 const { exec, spawn, execSync } = require("child_process");
 module.exports = raven = async (client, m, chatUpdate, store) => {
@@ -569,7 +569,9 @@ break;
 		const { Configuration, OpenAI } = require("openai");
 		    if (!text) return reply("Hello am Raven an Ai developed by Nick, how can I help you today?");
 
-           const configuration = new Configuration("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");
+           const configuration = new Configuration({
+		   apiKey: setting,
+	   });
 
             const g = new OpenAI(configuration);
 
