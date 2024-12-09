@@ -569,7 +569,7 @@ break;
 		{
         if (!text) return reply(`Hello Am RAVEN AI developed by Nick.How can i help u?`);
           let d = await fetchJson(
-            `https://bk9.fun/ai/chataibot?q=${text}`
+            `https://bk9.fun/ai/llama?q=${text}`
           );
           if (!d.BK9) {
             return reply(
