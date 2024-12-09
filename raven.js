@@ -580,6 +580,21 @@ break;
           }
       }
                 break;
+		      case "gpt2":
+		{
+        if (!text) return reply(`What's your question ?`);
+          let d = await fetchJson(
+            `https://bk9.fun/ai/jeeves-chat?q=${text}`
+          );
+          if (!d.BK9) {
+            return reply(
+              "An error occurred while fetching the AI chatbot response. Please try again later."
+            );
+          } else {
+            reply(d.BK9);
+          }
+      }
+                break;
 	      
 	      case 'trt': case 'translate':{
   	try {
@@ -2951,7 +2966,7 @@ break;
 }
 	break;
  
-        case 'gpt2': {
+        case 'gpt3': {
       const { ChatGpt } = require('chatgpt-scraper');
 
     try {
@@ -2962,7 +2977,7 @@ break;
         const result = await ChatGpt(text);
 
         // Send the result back to the user
-        if (result) {
+        if (result.ok) {
             await m.reply(result);
         } else {
             await m.reply("No response from ChatGPT. Please try again.");
