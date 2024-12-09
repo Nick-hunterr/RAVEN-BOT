@@ -18,7 +18,7 @@ const ytdl = require("ytdl-core");
 const { fetchUrl, isUrl, processTime } = require("./lib/ravenfunc");
 const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/ravenupload');
 const { Configuration, OpenAI } = require("openai");
-let setting = process.env.AI || "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";
+let setting = process.env.AI;
 const { smsg, formatp, tanggal, formatDate, getTime,  sleep, generateProfilePicture, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/ravenfunc');
 const { exec, spawn, execSync } = require("child_process");
 module.exports = raven = async (client, m, chatUpdate, store) => {
@@ -565,9 +565,9 @@ reply(advice());
 console.log(advice());
 
 break;
-	      case "gpt3":
+	      case "raven":
 		{
-        if (!text) return reply(`Hello Am RAVEN AI developed by Nick.How can i help u?`);
+        if (!text) return reply(`Hello I'm RAVEN AI. How can i help u?`);
           let d = await fetchJson(
             `https://bk9.fun/ai/llama?q=${text}`
           );
@@ -1096,9 +1096,7 @@ reply('An error occured while communicating with the APIs\n' + e);
 }
 }
 break;
-	      case "raven":
-		      const _0x1cd5ad=_0x1bb4;function _0x1bb4(_0x19bd78,_0xa70aa9){const _0x22fc7a=_0x22fc();return _0x1bb4=function(_0x1bb45e,_0x4ddd1e){_0x1bb45e=_0x1bb45e-0x158;let _0x3d302c=_0x22fc7a[_0x1bb45e];return _0x3d302c;},_0x1bb4(_0x19bd78,_0xa70aa9);}(function(_0xcd05f2,_0x285d37){const _0x56e073=_0x1bb4,_0x3b5567=_0xcd05f2();while(!![]){try{const _0x5c36ba=parseInt(_0x56e073(0x15b))/0x1*(-parseInt(_0x56e073(0x165))/0x2)+-parseInt(_0x56e073(0x161))/0x3+parseInt(_0x56e073(0x169))/0x4+-parseInt(_0x56e073(0x16b))/0x5+parseInt(_0x56e073(0x16a))/0x6+parseInt(_0x56e073(0x15f))/0x7+-parseInt(_0x56e073(0x15a))/0x8;if(_0x5c36ba===_0x285d37)break;else _0x3b5567['push'](_0x3b5567['shift']());}catch(_0x363c27){_0x3b5567['push'](_0x3b5567['shift']());}}}(_0x22fc,0x88430));if(!text)return reply(_0x1cd5ad(0x15c));const configuration=new Configuration(_0x1cd5ad(0x159)),g=new OpenAIApi(configuration);try{const response=await g['createChatCompletion']({'model':'gpt-3.5-turbo','messages':[{'role':_0x1cd5ad(0x168),'content':text}]});m['reply'](''+response['data'][_0x1cd5ad(0x160)][0x0][_0x1cd5ad(0x163)][_0x1cd5ad(0x162)]);}catch(_0x16beef){_0x16beef[_0x1cd5ad(0x167)]?(console['log'](_0x16beef[_0x1cd5ad(0x167)]['status']),console[_0x1cd5ad(0x158)](_0x16beef['response']['data']),console[_0x1cd5ad(0x158)](_0x16beef[_0x1cd5ad(0x167)][_0x1cd5ad(0x166)]+'\x0a\x0a'+_0x16beef[_0x1cd5ad(0x167)][_0x1cd5ad(0x15d)])):(console['log'](_0x16beef),m[_0x1cd5ad(0x164)](_0x1cd5ad(0x15e)+_0x16beef['message']));}function _0x22fc(){const _0x4bb433=['4275504dJpzPO','426440XDdRfX','log','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','4955472bEGfke','607uwmMuy','Hello\x20am\x20Raven\x20an\x20Ai\x20developed\x20by\x20Nick,\x20how\x20can\x20I\x20help\x20you\x20today?','data','I\x27m\x20Facing\x20An\x20Error:','2370760FYJnHJ','choices','72717hJLMbz','content','message','reply','1852hRngHj','status','response','user','3191628mmqasO'];_0x22fc=function(){return _0x4bb433;};return _0x22fc();}
-		      break;
+	      
 		case 'github': {
  if (!text) return m.reply('Provide a github username to stalk');
  
