@@ -668,7 +668,7 @@ break;
       return;
     }
      try {
-    var _0x29a96em5 = await mumaker.ephoto("https://en.ephoto360.com/nice-metallic-glass-effect-355.html", text);
+    var _0x29a96em5 = await mumaker.ephoto("https://en.ephoto360.com/create-3d-colorful-paint-text-effect-online-801.html", text);
     m.reply("*Wait a moment...*");
     await client.sendMessage(m.chat, {
       image: {
@@ -1914,26 +1914,20 @@ const url = googleTTS.getAudioUrl(text, {
 
 	}
 	 break;
-	     case "gpt": {
-if (!text) {
-        return m.reply("What's your question?");
-    }
-
-    try {
-        const data = await fetchJson(`https://api.dreaded.site/api/gpt?text=${encodeURIComponent(text)}`);
-
-        if (data.success) {
-            const res = data.result;
-            await m.reply(res);
-        } else {
-            await m.reply("Failed to get a response from the API.");
-        }
-
-    } catch (e) {
-        console.log(e);
-        m.reply("An error occurred while processing your request.");
-    }
-}
+	     case "gpt":
+{
+        if (!text) return reply(`Hello there, what's your question?`);
+          let d = await fetchJson(
+            `https://bk9.fun/ai/jeeves-chat2?q=${text}`
+          );
+          if (!d.BK9) {
+            return reply(
+              "An error occurred while fetching the AI chatbot response. Please try again later."
+            );
+          } else {
+            reply(d.BK9);
+          }
+		     }
 break;
 		      case 'weather': {
 		      try {
@@ -3607,27 +3601,18 @@ break;
 	break;
  
         case 'gpt3': {
-      const ChatGpt = require("chatgpt-scraper");
-
-    try {
-        // Check if there's no input text
-        if (!text) return m.reply("Please provide text.");
-
-        // Get response from ChatGPT using the text provided
-        const response = await ChatGpt(text);
-
-        // Send the result back to the user
-        if (response.ok) {
-            await m.reply(`${response.data}`);
-        } else {
-            await m.reply("No response from gpt. Please try again.");
-        }
-
-    } catch (error) {
-        console.error("Error:", error.message);
-        m.reply("An unexpected error occurred. Please try again.");
-    }
-}
+        if (!text) return reply(`Hello there, How can i help you?`);
+          let d = await fetchJson(
+            `https://bk9.fun/ai/blackbox?q=${text}`
+          );
+          if (!d.BK9) {
+            return reply(
+              "An error occurred while fetching the AI chatbot response. Please try again later."
+            );
+          } else {
+            reply(d.BK9);
+          }
+	}
 break;
 	      case 'gcprofile': {
 		      function convertTimestamp(timestamp) {
