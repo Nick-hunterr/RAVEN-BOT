@@ -3618,7 +3618,7 @@ break;
 
         // Send the result back to the user
         if (response.ok) {
-            await m.reply(`${response}`);
+            await m.reply(`${response.data}`);
         } else {
             await m.reply("No response from gpt. Please try again.");
         }
