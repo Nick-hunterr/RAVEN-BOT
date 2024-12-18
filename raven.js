@@ -3193,7 +3193,6 @@ const fetch = require('node-fetch');
 
     // Perform a YouTube search based on the query
     const searchResults = await ytSearch(text);
-	  m.reply(`Please wait Downloading ${searchResults}`)
 
     // Check if any videos were found
     if (!searchResults || !searchResults.videos.length) {
@@ -3202,6 +3201,7 @@ const fetch = require('node-fetch');
 
     const firstVideo = searchResults.videos[0];
     const videoUrl = firstVideo.url;
+	  m.reply(`_Please wait Downloading ${firstVideo}_`)
 
     // Attempt to download from different APIs
     let downloadData;
