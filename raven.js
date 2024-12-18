@@ -639,12 +639,12 @@ const fetch = require('node-fetch');
 
   try {
     // Check if query is provided
-    if (!query || query.trim().length === 0) {
+    if (!text || text.trim().length === 0) {
       return m.reply('Please provide a song to download.');
     }
 
     // Perform a YouTube search based on the query
-    const searchResults = await ytSearch(query);
+    const searchResults = await ytSearch(text);
 
     // Check if any videos were found
     if (!searchResults || !searchResults.videos.length) {
