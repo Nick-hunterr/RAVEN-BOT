@@ -691,18 +691,7 @@ const fetch = require('node-fetch');
       mimetype: 'audio/mpeg',
       fileName: `${videoDetails.title}.mp3`,
       caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
-      contextInfo: {
-        externalAdReply: {
-          title: videoDetails.title,
-          body: videoDetails.title,
-          mediaType: 1,
-          sourceUrl: '',
-          thumbnailUrl: firstVideo.thumbnail,
-          renderLargerThumbnail: false,
-          showAdAttribution: true,
-        },
-      },
-    };
+        };
 
     // Send the download link to the user
     await client.sendMessage(m.chat, messagePayload, { quoted: m });
