@@ -688,7 +688,7 @@ const fetch = require('node-fetch');
     // Prepare the message payload with external ad details
     const messagePayload = {
       document: { url: downloadUrl },
-      mimetype: 'audio/mp4',
+      mimetype: 'audio/mpeg',
       fileName: `${videoDetails.title}.mp3`,
       caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
       contextInfo: {
