@@ -627,7 +627,7 @@ let options = []
 	  }
 		break;
 
-	      case 'stream':{
+	      case 'play':{
 		      const ytSearch = require('yt-search');
 const fetch = require('node-fetch');
 
@@ -640,7 +640,7 @@ const fetch = require('node-fetch');
   try {
     // Check if query is provided
     if (!text || text.trim().length === 0) {
-      return m.reply('Please provide a song to download.');
+      return m.reply('What song do you want to download ?');
     }
 
     // Perform a YouTube search based on the query
@@ -690,12 +690,13 @@ const fetch = require('node-fetch');
       document: { url: downloadUrl },
       mimetype: 'audio/mp4',
       fileName: `${videoDetails.title}.mp3`,
+      caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
       contextInfo: {
         externalAdReply: {
           title: videoDetails.title,
           body: videoDetails.title,
           mediaType: 1,
-          sourceUrl: 'https://whatsapp.com/channel/0029Vaan9TF9Bb62l8wpoD47',
+          sourceUrl: '',
           thumbnailUrl: firstVideo.thumbnail,
           renderLargerThumbnail: false,
           showAdAttribution: true,
@@ -2861,7 +2862,7 @@ if (!text) {
     }
 }
 break;
-	case 'play': {
+	case 'play2': {
 		      const yts = require("yt-search");
 try {
 
@@ -3210,31 +3211,6 @@ m.reply("Download failed\n" + error)
 
 			     }
 		      break;
- 
-       case "play2": {
-		      const yts = require("yt-search");
-	       try {
-		if(!text) return m.reply('where is the song name ?')
-		      let data = await fetchJson (`https://bk9.fun/download/ytmp3?url=${text}`)
-
-let name = data.result.title;
-
-await client.sendMessage(m.chat, {
- document: {url: data.result.audioLink},
-mimetype: "audio/mpeg",
-caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
- fileName: name }, { quoted: m });
-
-
-
-} catch (error) {
-
-m.reply("Download failed\n" + error)
-
-      }
-}
-		      
-break; 
 
 case 'ytsearch':
     case 'yts': {
