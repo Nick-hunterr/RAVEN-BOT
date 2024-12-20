@@ -3276,7 +3276,7 @@ case 'ytsearch':
     break;
 
 case "ytmp3": case "yta": {
-const yts = require("yt-search");
+const ytSearch = require("yt-search");
 const fetch = require('node-fetch');
 try {
 
