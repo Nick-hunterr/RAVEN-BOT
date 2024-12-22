@@ -660,7 +660,7 @@ const fetch = require('node-fetch');
     let videoDetails;
 
     // Try Gifted API
-    downloadData = await getDownloadData(`https://www.dark-yasiya-api.site/download/ytmp4?url=${encodeURIComponent(videoUrl)}`);
+    downloadData = await getDownloadData(`https://api.giftedtech.my.id/api/download/dlmp3?url=${encodeURIComponent(videoUrl)}&apikey=gifted`);
     if (downloadData.success) {
       downloadUrl = downloadData.result.download_url;
       videoDetails = downloadData.result;
