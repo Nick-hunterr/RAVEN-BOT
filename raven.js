@@ -672,7 +672,7 @@ const fetch = require('node-fetch');
         videoDetails = downloadData.result;
       } else {
         // Try Dreaded API if both fail
-        downloadData = await getDownloadData(`https://api.dreaded.site/api/ytdl/video?query=${encodeURIComponent(videoUrl)}`);
+        downloadData = await getDownloadData(`https://bk9.fun/download/ytmp3?url=${encodeURIComponent(videoUrl)}`);
         if (downloadData.success) {
           downloadUrl = downloadData.result.download_url;
           videoDetails = downloadData.result;
@@ -3221,7 +3221,7 @@ const fetch = require('node-fetch');
         videoDetails = downloadData.result;
       } else {
         // Try Dreaded API if both fail
-        downloadData = await getDownloadData(`https://api.dreaded.site/api/ytdl/video?query=${encodeURIComponent(videoUrl)}`);
+        downloadData = await getDownloadData(`https://bk9.fun/download/ytmp3?url=${encodeURIComponent(videoUrl)}`);
         if (downloadData.success) {
           downloadUrl = downloadData.result.download_url;
           videoDetails = downloadData.result;
